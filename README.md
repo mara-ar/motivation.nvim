@@ -4,6 +4,23 @@
 
 Motivation.nvim is a non-serious Neovim plugin that simply displays motivational quotes to you if you are every in the need of motivation!
 
+**Lazy.nvim Installation**
+```lua
+{
+    "Abhi6/motivation.nvim",
+    lazy = true,
+    config = function()
+        require'motivation'.setup({
+            quotes = {
+                "your quotes",
+            }
+        })
+    end,
+    dependencies = {
+        "MunifTanjim/nui.nvim" -- floating window functionality
+    }
+```
+
 **Mappings**\
 ```:MotivationalQuote```\
 Will display a randomly selected quote for a previously configured table of quotes
@@ -21,7 +38,7 @@ require'motivation'.setup {
 
 **Default Configuration**
 ```lua
-require'motivation'.setup {
+require'motivation'.setup({
     quotes = {
         "The only way to do great work is to love what you do. - Steve Jobs",
         "Believe you can and you're halfway there. - Theodore Roosevelt",
@@ -34,5 +51,5 @@ require'motivation'.setup {
         "The best way to predict the future is to create it. - Peter Drucker",
         "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson"
     }
-}
+})
 ```
