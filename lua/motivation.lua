@@ -25,11 +25,43 @@ local function tableLength(T)
 	return count
 end
 
-M.show_random_quote = function ()
+M.get_random_quote = function ()
 	local numQuotes = tableLength(M.quotes)
 	math.randomseed(os.time())
 	local index = math.random(numQuotes)
-	print(vim.inspect(M.quotes[index]))
+	return (vim.inspect(M.quotes[index]))
+end
+
+M.show_quote = function()
+	local message = M.get_random_quote()
+	local Popup = require("nui.popup")
+	local event = require("nui.utils.autocmd").event
+
+	local popup = Popup({
+		enter = true,
+		focusable = false,
+		border = {
+			style = "rounded",
+		},
+		position = "50%",
+		size = {
+			width = "25%",
+			height = "10%",
+		},
+	})
+
+	-- mount/open the component
+	popup:mount()
+
+	-- unmount component when cursor leaves buffer
+	popup:on(event.BufLeave, function()
+		popup:unmount()
+	end)
+
+	vim.api.nvim_buf_set_keymap(popup.bufnr, "n", "q", ":q<CR>", {silent = true})
+
+	-- set content
+	vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, { message })
 end
 
 return M
