@@ -4,6 +4,8 @@
 
 Motivation.nvim is a non-serious Neovim plugin that simply displays motivational quotes to you if you are every in the need of motivation!
 
+![motivation.nvim plugin](motivation-plugin-nvim.png)
+
 **Lazy.nvim Installation**
 ```lua
 {
