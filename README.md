@@ -53,3 +53,8 @@ require'motivation'.setup({
     }
 })
 ```
+
+
+#### Inspiration
+Found a previous plugin similar to this (cannot remember the exact name, unfortunately) but the quote would only be display at the bottom of the screen (where we get output from commands in NeoVim). \
+So this plugin shows the quote as a floating window instead!
